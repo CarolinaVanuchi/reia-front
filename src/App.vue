@@ -1,14 +1,18 @@
 <script>
+import Navbar from './components/Navbar.vue';
 
+export default {
+  components: {
+    Navbar
+  }
+}
 
 </script>
 <template>
-  <h1>Hello World!</h1>
-  <button type="button" class="btn btn-primary">Primary</button>
+  <Navbar />
+  <router-view/>
 </template>
 
 <style>
-h1 {
-  color: green;
-}
+
 </style>
