@@ -2,7 +2,8 @@
 
     <div id="nav">
         <router-link to="/">Login</router-link>
-        <router-link to="/home">Home</router-link>
+        <router-link to="/device">Device</router-link>
+        <router-link to="/user">Usuário</router-link>
     </div>
 
 </template>

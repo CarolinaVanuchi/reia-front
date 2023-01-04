@@ -1,6 +1,6 @@
 <template>
-<div class="home">
-    Home
+<div class="user">
+    User
 </div>
 </template>
 
@@ -11,6 +11,6 @@
 
 <style>
 body {
-    background-color: green;
+    background-color: blue;
 }
 </style>

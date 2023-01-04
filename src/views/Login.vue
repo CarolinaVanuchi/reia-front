@@ -44,6 +44,8 @@
 </template>
 
 <script>
+import http from '../services/http.js';
+
 export default {
   data() {
     return {
@@ -53,13 +55,18 @@ export default {
   },
 
   methods: {
-    login() {
+    async login() {
       if (!this.user || !this.pass) {
         alert("Preencher campos de usuário e senha");
         return;
       }
-      console.log(this.user);
-      console.log(this.pass);
+
+      try {
+        const { data } = await http.post('auth/login', { username: this.user, password: this.pass })
+        console.log(data)
+      } catch (error) {
+        console.log(error);
+      }
     },
   }
 }
