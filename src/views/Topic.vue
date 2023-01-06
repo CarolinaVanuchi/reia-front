@@ -1,7 +1,7 @@
 <template>
-<div class="user">
-    User
-</div>
+    <div class="topic">
+        Topic
+    </div>
 </template>
 
 <script>

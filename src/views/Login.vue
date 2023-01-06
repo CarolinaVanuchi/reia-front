@@ -1,6 +1,6 @@
-<template>
+<template >
   <div class="login">
-    <div class="container py-5 h-100">
+    <div class="container py-5 h-100" style="background-color: #1C1C1C; border-radius: 1rem 1rem  1rem 1rem;">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col col-xl-10">
           <div class="card" style="border-radius: 1rem;">
@@ -45,8 +45,12 @@
 
 <script>
 import http from '../services/http.js';
+// import { useAuth } from '../stores/auth.js';
+
+// const auth = useAuth();
 
 export default {
+
   data() {
     return {
       user: "",
@@ -62,19 +66,22 @@ export default {
       }
 
       try {
-        const { data } = await http.post('auth/login', { username: this.user, password: this.pass })
-        console.log(data)
+        const response = await http.post('auth/login', { username: this.user, password: this.pass });
+        localStorage.setItem('token', response.data.token);
+        // auth.setToken(response.data.token);
       } catch (error) {
-        console.log(error);
+        localStorage.setItem('token', '');
+        // auth.clearToken();
+        console.log('Erro', error);
+        alert(error?.response?.data.msg);
       }
     },
   }
 }
 
 </script>
-
 <style>
 body {
-  background-color: #1C1C1C;
+  background-color: #FFFFFF
 }
 </style>
