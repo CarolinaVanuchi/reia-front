@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Device from '../views/Device.vue';
-import User from '../views/User.vue';
+import ListUser from '../views/user/List.vue';
+import CreateUser from '../views/user/Create.vue';
 import Login from '../views/Login.vue';
 import Data from '../views/Data.vue';
 import Topic from '../views/Topic.vue';
@@ -27,9 +28,14 @@ const routes = [
         component: Topic
     },
     {
-        path: '/user',
-        name: 'User',
-        component: User
+        path: '/list_user',
+        name: 'ListUser',
+        component: ListUser
+    },
+    {
+        path: '/create_user',
+        name: 'CreateUser',
+        component: CreateUser
     },
 ]
 
