@@ -39,7 +39,7 @@
   
   <script>
   
-  import { reactive } from "vue";
+import { reactive } from "vue";
 import useUser  from "./user";
   
   export default {

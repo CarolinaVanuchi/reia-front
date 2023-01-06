@@ -32,8 +32,10 @@
                   <th>{{ item.idUser }}</th>
                   <td>{{ item.name }}</td>
                   <td>{{ item.username }}</td>
-                  <td><button class="btn btn-sm btn-outline-warning"> <router-link class="nav-link active" :to="{name: 'UpdateUser', params: {id: item.idUser} }">Alterar</router-link></button></td>
-                  <td><button class="btn btn-sm btn-outline-danger" @click="removeUser(item.idUser)">Excluir</button></td>
+                  <td><button class="btn btn-sm btn-outline-warning"> <router-link class="nav-link active"
+                        :to="{ name: 'UpdateUser', params: { id: item.idUser } }">Alterar</router-link></button></td>
+                  <td><button class="btn btn-sm btn-outline-danger" @click="removeUser(item.idUser)">Excluir</button>
+                  </td>
                 </tr>
               </template>
             </tbody>
@@ -44,28 +46,20 @@
   </div>
 </template>
 
-<script>
+<script setup>
 
 import useUser from "./user";
 import { onMounted } from "vue";
 
-export default {
-  setup() {
-    const { users, getUsers, deleteUser } = useUser();
+const { users, getUsers, deleteUser } = useUser();
 
-    onMounted(getUsers);
+onMounted(() => getUsers())
 
-    const removeUser = async (id) => {
-      if (!window.confirm('Deseja excluir')) return;
+const removeUser = async (id) => {
+  if (!window.confirm('Deseja excluir')) return;
 
-      await deleteUser(id);
-      await getUsers();
-    }
-    return {
-      users,
-      removeUser
-    }
-  }
+  await deleteUser(id);
+  await getUsers();
 }
 
 </script>
