@@ -3,7 +3,7 @@ import Device from '../views/Device.vue';
 import ListUser from '../views/user/List.vue';
 import CreateUser from '../views/user/Create.vue';
 import UpdateUser from '../views/user/Update.vue';
-import Login from '../views/Login.vue';
+import Login from '../views/login/Login.vue';
 import Data from '../views/Data.vue';
 import Topic from '../views/Topic.vue';
 

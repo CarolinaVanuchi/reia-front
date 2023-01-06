@@ -8,7 +8,7 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <h2>Cadastro</h2>
+          <h4>Cadastro</h4>
 
           <form @submit.prevent="saveUser">
 
@@ -65,7 +65,3 @@ const saveUser = async () => {
 }
 
 </script>
-
-<style>
-
-</style>

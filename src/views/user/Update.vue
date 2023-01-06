@@ -8,7 +8,7 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <h2>Alterar</h2>
+          <h4>Alterar</h4>
           <form @submit.prevent="alterUser">
 
             <div class="row mt-3">
@@ -66,6 +66,3 @@ const alterUser = async () => {
 
 </script>
 
-<style>
-
-</style>

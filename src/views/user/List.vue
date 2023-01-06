@@ -16,7 +16,7 @@
       <div class="row mt-3">
         <div class="col-md-12">
 
-          <table class="table table-striped">
+          <table class="table table-striped table-hover">
             <thead class="table-dark">
               <tr>
                 <th scope="col">#</th>
@@ -64,6 +64,3 @@ const removeUser = async (id) => {
 
 </script>
 
-<style>
-
-</style>
