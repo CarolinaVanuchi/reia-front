@@ -32,9 +32,8 @@
                   <th>{{ item.idUser }}</th>
                   <td>{{ item.name }}</td>
                   <td>{{ item.username }}</td>
-                  <td><button class="btn btn-sm btn-outline-danger" @click="removeUser(item.idUser)">Excluir</button>
-                  </td>
-                  <td>@mdo</td>
+                  <td><button class="btn btn-sm btn-outline-warning"> <router-link class="nav-link active" :to="{name: 'UpdateUser', params: {id: item.idUser} }">Alterar</router-link></button></td>
+                  <td><button class="btn btn-sm btn-outline-danger" @click="removeUser(item.idUser)">Excluir</button></td>
                 </tr>
               </template>
             </tbody>

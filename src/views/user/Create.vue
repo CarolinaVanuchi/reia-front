@@ -57,6 +57,11 @@ import useUser  from "./user";
                 alert('Preencha todos os campos');
                 return;
             }
+
+            if (form.password != form.password_repet) {
+                alert('Senhas devem ser iguais');
+                return;
+            }
             await createUser({name: form.name, username: form.username, password: form.password, password_repet: form.password_repet })
         }
       return {

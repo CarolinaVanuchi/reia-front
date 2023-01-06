@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router';
 
 export default function useUser() {
     const users = ref([]);
+    const userOne = ref([]);
     const router = useRouter();
 
 
@@ -16,6 +17,15 @@ export default function useUser() {
         }
     }
 
+    const getOneUser = async (id) => {
+        try {
+            let resposnse = await http.get('users/'+id);
+            userOne.value = resposnse.data;
+        } catch (error) {
+            console.log(error)
+            alert(error?.response?.data.msg);
+        }
+    }
     const deleteUser = async (id) => {
         try {
             await http.delete('users/' + id);
@@ -33,11 +43,23 @@ export default function useUser() {
         }
     }
 
+    const updateUser = async (id) => {
+        try {
+            await http.put('users/'+id, {name: userOne.value.name, username: userOne.value.username, password: userOne.value.password});
+            await router.push("/list_user");
+        } catch (error) {
+            alert(error?.response?.data.msg);
+        }
+    }
+
 
     return {
         users,
+        userOne,
         getUsers,
+        getOneUser,
         deleteUser,
-        createUser
+        createUser,
+        updateUser
     }
 }
