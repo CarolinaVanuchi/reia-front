@@ -1,7 +1,7 @@
 import { ref } from 'vue';
 import http from "../../services/http.js";
 import { useRouter } from 'vue-router';
-import useAuth from "./auth";
+import useAuth from "../../store/auth";
 
 export default function useLogin() {
     

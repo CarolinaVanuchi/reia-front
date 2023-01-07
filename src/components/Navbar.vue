@@ -35,7 +35,7 @@
 
 <script setup>
 
-import useAuth from "../views/login/auth";
+import useAuth from "../store/auth";
 import { onMounted } from "vue";
 const auth = useAuth();
 

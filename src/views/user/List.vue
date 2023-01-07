@@ -56,7 +56,7 @@ const { users, getUsers, deleteUser } = useUser();
 onMounted(() => getUsers())
 
 const removeUser = async (id) => {
-  if (!window.confirm('Deseja excluir')) return;
+  if (!window.confirm('Deseja excluir?')) return;
 
   await deleteUser(id);
   await getUsers();

@@ -6,6 +6,8 @@ import UpdateUser from '../views/user/Update.vue';
 import Login from '../views/login/Login.vue';
 import Data from '../views/Data.vue';
 import Topic from '../views/Topic.vue';
+import NotFound from '../views/notFound/NotFound.vue';
+import useAuth from "../store/auth";
 
 const routes = [
     {
@@ -44,9 +46,28 @@ const routes = [
         component: UpdateUser,
         props: true
     },
+    { path: "/:catchAll(.*)", component: NotFound }
 ]
 
 const router = createRouter({ history: createWebHistory(), routes });
+
+const protectedRoutes = [
+    "CreateUser",
+    "UpdateUser",
+    "ListUser",
+]
+
+
+router.beforeEach((to, from, next) => {
+    const isProtected = protectedRoutes.includes(to.name)
+    const auth = useAuth();
+    if (isProtected && !auth.isAuthenticated.value) {
+        next({
+            path: '/'
+        })
+    } else next()
+})
+
 
 
 
