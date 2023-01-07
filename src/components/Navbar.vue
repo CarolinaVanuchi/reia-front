@@ -1,6 +1,6 @@
 <template>
 
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <nav v-if="auth.isAuthenticated.value" class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Reia</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
@@ -26,19 +26,24 @@
                     </li>
                 </ul>
                 <form class="d-flex">
-                    <button class="btn btn-sm btn-outline-info" type="submit">Sair</button>
+                    <button class="btn btn-sm btn-outline-info" type="button" @click="logout">Sair</button>
                 </form>
             </div>
         </div>
     </nav>
 </template>
 
-<script>
-export default {
-    name: 'Navbar'
+<script setup>
+
+import useAuth from "../views/login/auth";
+import { onMounted } from "vue";
+const auth = useAuth();
+
+function logout()
+{
+    auth.clearLocalStorage();
 }
 </script>
-
 <style>
 
 </style>

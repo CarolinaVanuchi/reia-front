@@ -1,5 +1,5 @@
 <template>
-  <div class="container py-5 h-100" style="background-color: #1c1c1c; border-radius: 1rem 1rem 1rem 1rem">
+  <div  v-if="!auth.isAuthenticated.value" class="container py-5 h-100" style="background-color: #1c1c1c; border-radius: 1rem 1rem 1rem 1rem; margin-top: 60px">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col col-xl-10">
         <div class="card" style="border-radius: 1rem">
@@ -44,17 +44,16 @@
 
 import { reactive } from "vue";
 import useLogin from "./login";
+
+import useAuth from "./auth";
+const auth = useAuth();
+
 const { login } = useLogin();
-
-// import { useAuth } from '../stores/auth.js';
-
-// const auth = useAuth();
 
 const form = reactive({
   username: '',
   password: ''
 })
-
 
 const doLogin = async () => {
   if (!form.username || !form.password) {

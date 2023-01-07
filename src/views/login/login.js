@@ -1,22 +1,22 @@
 import { ref } from 'vue';
 import http from "../../services/http.js";
 import { useRouter } from 'vue-router';
+import useAuth from "./auth";
 
 export default function useLogin() {
-
-    // const router = useRouter();
+    
+    const { setLocalStorage, clearLocalStorage } = useAuth();
+    const router = useRouter();
 
     const login = async (data) => {
         try {
-            console.log('aaa')
-            console.log(data)
             const response = await http.post("auth/login", data);
-            localStorage.setItem("token", response.data.token);
-            // auth.setToken(response.data.token);
+            setLocalStorage(response.data.token, response.data.id);
+            await router.push("/data");
+            location.reload();
         } catch (error) {
-            localStorage.setItem("token", "");
-            // auth.clearToken();
             alert(error?.response?.data.msg);
+            clearLocalStorage();
         }
     }
 
