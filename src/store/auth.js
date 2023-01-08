@@ -27,19 +27,17 @@ export default function useAuth() {
     const getIdUser = () => {
         return localStorage.getItem("idUser");
     }
-
     const isAuthenticated = computed(() => {
-        if (getToken() == null || getIdUser() == null) return false;
-        return true;
+        return (getToken() != null && getIdUser() != null);
     })
 
     return {
         token,
         idUser,
+        isAuthenticated,
         setLocalStorage,
         getToken,
         getIdUser,
-        clearLocalStorage,
-        isAuthenticated
+        clearLocalStorage
     }
 }
