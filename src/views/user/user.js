@@ -10,45 +10,44 @@ export default function useUser() {
 
     const getUsers = async () => {
         try {
-            let resposnse = await http.get('users');
+            let resposnse = await http.get('user');
             users.value = resposnse.data;
         } catch (error) {
-            alert(error?.response?.data.msg);
+            alert(error?.response?.data);
         }
     }
 
     const getOneUser = async (id) => {
         try {
-            let resposnse = await http.get('users/'+id);
+            let resposnse = await http.get('user/'+id);
             userOne.value = resposnse.data;
         } catch (error) {
-            console.log(error)
-            alert(error?.response?.data.msg);
+            alert(error?.response?.data);
         }
     }
     const deleteUser = async (id) => {
         try {
-            await http.delete('users/' + id);
+            await http.delete('user/' + id);
         } catch (error) {
-            alert(error?.response?.data.msg);
+            alert(error?.response?.data);
         }
     }
 
     const createUser = async (data) => {
         try {
-            await http.post('users/', data);
-            await router.push("/list_user")
+            await http.post('user/', data);
+            await router.push("/user")
         } catch (error) {
-            alert(error?.response?.data.msg);
+            alert(error?.response?.data);
         }
     }
 
     const updateUser = async (id) => {
         try {
-            await http.put('users/'+id, {name: userOne.value.name, username: userOne.value.username, password: userOne.value.password});
-            await router.push("/list_user");
+            await http.put('user/'+id, {name: userOne.value.name, username: userOne.value.username, password: userOne.value.password});
+            await router.push("/user");
         } catch (error) {
-            alert(error?.response?.data.msg);
+            alert(error?.response?.data);
         }
     }
 

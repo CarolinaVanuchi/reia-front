@@ -1,0 +1,65 @@
+<template>
+    <div class="user">
+      <div class="container-fluid">
+        <div class="row" style="margin-top: 30px">
+          <hr />
+          <h3>Disposítivo</h3>
+          <hr />
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h4>Cadastrar</h4>
+  
+            <form @submit.prevent="saveDevice">
+  
+              <div class="row mt-3">
+                <input class="form-control" placeholder="Nome" type="text" v-model="form.name" />
+              </div>
+              <div class="row mt-3">
+                <input class="form-control" placeholder="IP" type="text" v-model="form.ip" />
+              </div>
+              <div class="row mt-3">
+                <input class="form-control" placeholder="Porta" type="number" v-model="form.port" />
+              </div>
+              <div class="row mt-3">
+                <input class="form-control" placeholder="Amostragem" type="number" v-model="form.sample" />
+              </div>
+              <div class="row mt-3">
+                <button class="btn btn-outline-success btn-sm btn-block">
+                  Salvar
+                </button>
+              </div>
+            </form>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </template>
+  
+  <script setup>
+    
+    import { reactive } from "vue";
+    import useDevice from "./device";
+
+    const { createDevice } = useDevice();
+    
+    const form = reactive({
+        name: '',
+        ip: '',
+        port: '',
+        sample: ''
+    })
+
+    const saveDevice = async () => {
+        console.log('ss')
+        if (!form.name || !form.ip || !form.port || !form.sample) {
+            alert("Informe todos os campos");
+            return;
+        }
+
+        await createDevice({ name: form.name, ip: form.ip, port: form.port, sample: form.sample});
+    }
+  
+  </script>
+  

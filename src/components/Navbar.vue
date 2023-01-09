@@ -19,7 +19,7 @@
                         <router-link class="nav-link active" to="/topic">Tópicos</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link class="nav-link active" to="/list_user">Usuário</router-link>
+                        <router-link class="nav-link active" to="/user">Usuário</router-link>
                     </li>
                 </ul>
                 <form class="d-flex">

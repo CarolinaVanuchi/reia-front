@@ -1,8 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Device from '../views/Device.vue';
+import ListDevice from '../views/device/List.vue';
+import CreateDevice from '../views/device/Create.vue';
+import UpdateDevice from '../views/device/Update.vue';
+
 import ListUser from '../views/user/List.vue';
 import CreateUser from '../views/user/Create.vue';
 import UpdateUser from '../views/user/Update.vue';
+
 import Login from '../views/login/Login.vue';
 import Data from '../views/Data.vue';
 import Topic from '../views/Topic.vue';
@@ -21,17 +25,28 @@ const routes = [
         component: Data,
     },
     {
-        path: '/device',
-        name: 'Device',
-        component: Device
-    },
-    {
         path: '/topic',
         name: 'Topic',
         component: Topic
     },
     {
-        path: '/list_user',
+        path: '/create_device',
+        name: 'CreateDevice',
+        component: CreateDevice
+    },
+    {
+        path: '/device',
+        name: 'ListDevice',
+        component: ListDevice
+    },
+    {
+        path: '/update_device/:id',
+        name: 'UpdateDevice',
+        component: UpdateDevice,
+        props: true
+    },
+    {
+        path: '/user',
         name: 'ListUser',
         component: ListUser
     },
@@ -55,6 +70,9 @@ const protectedRoutes = [
     "CreateUser",
     "UpdateUser",
     "ListUser",
+    "CreateDevice",
+    "UpdateDevice",
+    "ListDevice"
 ]
 
 
