@@ -25,6 +25,7 @@ export default function useUser() {
             alert(error?.response?.data);
         }
     }
+    
     const deleteUser = async (id) => {
         try {
             await http.delete('user/' + id);

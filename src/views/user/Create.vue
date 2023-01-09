@@ -8,7 +8,7 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <h4>Cadastro</h4>
+          <h4>Cadastrar</h4>
 
           <form @submit.prevent="saveUser">
 

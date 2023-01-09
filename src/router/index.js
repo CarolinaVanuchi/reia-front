@@ -1,4 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
+
+import Login from '../views/login/Login.vue';
+import NotFound from '../views/notFound/NotFound.vue';
+import useAuth from "../store/auth";
+
 import ListDevice from '../views/device/List.vue';
 import CreateDevice from '../views/device/Create.vue';
 import UpdateDevice from '../views/device/Update.vue';
@@ -7,11 +12,12 @@ import ListUser from '../views/user/List.vue';
 import CreateUser from '../views/user/Create.vue';
 import UpdateUser from '../views/user/Update.vue';
 
-import Login from '../views/login/Login.vue';
+import Topic from '../views/topic/List.vue';
+import CreateTopic from '../views/topic/Create.vue';
+
+
 import Data from '../views/Data.vue';
-import Topic from '../views/Topic.vue';
-import NotFound from '../views/notFound/NotFound.vue';
-import useAuth from "../store/auth";
+
 
 const routes = [
     {
@@ -26,8 +32,13 @@ const routes = [
     },
     {
         path: '/topic',
-        name: 'Topic',
+        name: 'ListTopic',
         component: Topic
+    },
+    {
+        path: '/create_topic',
+        name: 'CreateTopic',
+        component: CreateTopic
     },
     {
         path: '/create_device',
@@ -72,7 +83,8 @@ const protectedRoutes = [
     "ListUser",
     "CreateDevice",
     "UpdateDevice",
-    "ListDevice"
+    "ListDevice",
+    "ListTopic"
 ]
 
 

@@ -9,7 +9,7 @@
       <div class="row">
         <div class="col-md-12">
           <button class="btn btn-outline-success btn-sm btn-block">
-            <router-link class="nav-link active" to="/create_user">Cadastro</router-link>
+            <router-link class="nav-link active" to="/create_user">Cadastrar</router-link>
           </button>
         </div>
       </div>

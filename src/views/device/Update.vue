@@ -3,12 +3,12 @@
     <div class="container-fluid">
       <div class="row" style="margin-top: 30px">
         <hr />
-        <h3>Usuários</h3>
+        <h3>Disposítivo</h3>
         <hr />
       </div>
       <div class="row">
         <div class="col-md-12">
-          <h4>Disposítivo</h4>
+          <h4>Alterar</h4>
 
           <form @submit.prevent="alterDevice">
 
