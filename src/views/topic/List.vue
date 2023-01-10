@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <button class="btn btn-outline-success btn-sm btn-block">
-                    <router-link class="nav-link active" to="/create_topic">Cadastrar</router-link>
+                        <router-link class="nav-link active" to="/create_topic">Cadastrar</router-link>
                     </button>
                 </div>
             </div>
@@ -21,6 +21,7 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Dispositivo</th>
+                                <th scope="col">Nome</th>
                                 <th scope="col">Tópico</th>
                                 <th scope="col">GPIO</th>
                                 <th scope="col">Tipo de Entrada</th>
@@ -32,6 +33,7 @@
                             <template v-for="item in topics" :key="item.idTopic">
                                 <tr>
                                     <th>{{ item.idTopic }}</th>
+                                    <th>{{ item.name }}</th>
                                     <th>{{ item.idDevice }}</th>
                                     <th>{{ item.topic }}</th>
                                     <td>N: {{ item.gpio }}, {{ (item.gpioInput) ? 'Entrada' : 'Saída'}}</td>

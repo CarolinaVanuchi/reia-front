@@ -33,11 +33,44 @@ export default function useTopic() {
         }
     }
 
+    const getOneTopic = async (id) => {
+        try {
+            let response = await http.get('topic/' + id);
+            topicOne.value = response.data;
+        } catch (error) {
+            alert(error?.response?.data);
+        }
+    }
+
+    const updateTopic = async (id) => {
+        try {
+            await http.put('topic/' + id, {
+                name: topicOne.value.name,
+                gpio: topicOne.value.gpio,
+                gpioInput: topicOne.value.gpioInput,
+                topic: topicOne.value.topic,
+                device: topicOne.value.device,
+                typeData: topicOne.value.typeData,
+                minValueData: topicOne.value.minValueData,
+                maxValueData: topicOne.value.maxValueData,
+                typeOutput: topicOne.value.typeOutput,
+                minOutput: topicOne.value.minOutput,
+                maxOutput: topicOne.value.maxOutput,
+            });
+            await router.push("/topic");
+        } catch (error) {
+            console.log(error)
+            alert(error?.response?.data);
+        }
+    }
+
     return {
         topics,
         topicOne,
         getTopics,
         deleteTopic,
-        createTopic
+        createTopic,
+        getOneTopic,
+        updateTopic
     }
 }
