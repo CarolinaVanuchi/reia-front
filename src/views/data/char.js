@@ -1,19 +1,15 @@
-let labelsArray
-let dataArray = [40, 39, 10, 40, 39, 80, 40];
-
 export const data = {
-    labels: labelsArray,
-    datasets: [
-      {
-        label: 'Valores',
-        backgroundColor: '#6A5ACD',
-        data: dataArray
-      }
-    ]
-  }
-  
-  export const options = {
-    responsive: true,
-    maintainAspectRatio: false
-  }
-  
+  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+  datasets: [
+    {
+      label: 'Data One',
+      backgroundColor: '#f87979',
+      data: [40, 39, 10, 40, 39, 80, 40]
+    }
+  ]
+}
+
+export const options = {
+  responsive: true,
+  maintainAspectRatio: false
+}

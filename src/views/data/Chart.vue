@@ -2,7 +2,7 @@
   <Line :data="data" :options="options" />
 </template>
 
-<script>
+<script lang="ts">
 import {
   Chart as ChartJS,
   CategoryScale,
