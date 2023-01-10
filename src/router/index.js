@@ -15,7 +15,7 @@ import UpdateUser from '../views/user/Update.vue';
 import Topic from '../views/topic/List.vue';
 import CreateTopic from '../views/topic/Create.vue';
 
-import Data from '../views/data/Data.vue';
+import Data from '../views/data/topic/Data.vue';
 
 const routes = [
     {
