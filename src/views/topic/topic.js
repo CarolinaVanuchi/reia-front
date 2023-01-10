@@ -24,10 +24,20 @@ export default function useTopic() {
         }
     }
 
+    const createTopic = async (data) => {
+        try {
+            await http.post('topic/', data);
+            await router.push("/topic")
+        } catch (error) {
+            alert(error?.response?.data);
+        }
+    }
+
     return {
         topics,
         topicOne,
         getTopics,
-        deleteTopic
+        deleteTopic,
+        createTopic
     }
 }
