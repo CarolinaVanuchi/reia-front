@@ -6,9 +6,9 @@
                 <h3>Dados por tópico</h3>
                 <hr />
             </div>
-            <form @submit.prevent="buscar">
+            <form @submit.prevent="getItens">
                 <div class="row mt-3">
-                    <div class="col-md-3" >
+                    <div class="col-md-3">
                         <select class="form-select" v-model="form.idTopic">
                             <option v-for="item in topics" :key="item.idTopic" :value="item.idTopic">{{
                                 item.idTopic
@@ -24,8 +24,7 @@
             </form>
             <div class="row mt-3">
                 <div class="col-md-4">
-
-                    <table class="table table-striped table-hover">
+                    <table v-if="loaded" class="table table-striped table-hover">
                         <thead class="table-dark">
                             <tr>
                                 <th scope="col">#</th>
@@ -45,7 +44,7 @@
                     </table>
                 </div>
                 <div class="col-md-8">
-                    <Chart />
+                    <Line v-if="loaded" :data="data" :options="options" />
                 </div>
             </div>
         </div>
@@ -56,25 +55,99 @@
 import { reactive } from "vue";
 import useData from "../data";
 import { onMounted } from "vue";
-import Chart from "../Chart.vue";
 import useTopic from "../../topic/topic";
+import { ref } from 'vue';
 
-const { datas, getDatas } = useData();
+
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend
+} from 'chart.js'
+
+import { Line } from 'vue-chartjs'
+
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend
+)
+
+const { datas, getDatasByTopic } = useData();
 const { topics, getTopics } = useTopic();
 
-onMounted(() => getDatas(), getTopics())
- 
-let aux = 0;
+let labelsArray = [];
+let dataArray = [];
+let loaded = ref([]);
+let idAux = ref([]);
+
+onMounted(() => begin())
+
 const form = reactive({
     idTopic: ''
 })
 
-const buscar = async () => {
+const data = {
+    labels: labelsArray,
+    datasets: [
+        {
+            label: 'Dados',
+            backgroundColor: '#f87979',
+            data: dataArray
+        }
+    ]
+}
+
+const options = {
+    responsive: true,
+    maintainAspectRatio: false
+}
+
+const begin = () => {
+    loaded.value = false;
+    idAux.value =  0;
+    getTopics();
+}
+
+const getItens = async () => {
     if (!form.idTopic) {
         alert("Escolha uma opção");
         return;
     }
-    aux = form.idTopic;
-    await getDatas(form.idTopic);
+    idAux.value = form.idTopic;
+    search(form.idTopic);
 }
+
+const search = async (id) => {
+    await getDatasByTopic(id);
+    fill();
+}
+
+const clear = () => {
+    loaded.value = false;
+    labelsArray = [];
+    dataArray = [];
+}
+
+const fill = () => {
+    const countMax = datas.value.length;
+
+    if (countMax <= 0) { clear(); return; }
+
+    for (let i = 0; i < countMax; i++) {
+        labelsArray.push(datas.value[i].dataTime);
+        dataArray.push(datas.value[i].value);
+        loaded.value = true;
+    }
+}
+
 </script>
