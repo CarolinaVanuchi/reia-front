@@ -88,7 +88,7 @@ const { topics, getTopics } = useTopic();
 let labelsArray = [];
 let dataArray = [];
 let loaded = ref([]);
-let idAux = ref([]);
+let idTopic = 0;
 
 onMounted(() => begin())
 
@@ -114,7 +114,7 @@ const options = {
 
 const begin = () => {
     loaded.value = false;
-    idAux.value =  0;
+    idTopic =  0;
     getTopics();
 }
 
@@ -123,25 +123,25 @@ const getItens = async () => {
         alert("Escolha uma opção");
         return;
     }
-    idAux.value = form.idTopic;
-    search(form.idTopic);
+    idTopic = form.idTopic;
+    search();
 }
 
-const search = async (id) => {
-    await getDatasByTopic(id);
+const search = async () => {
+    clear();
+    if (idTopic <= 0) return;
+    await getDatasByTopic(idTopic);
     fill();
 }
 
 const clear = () => {
-    loaded.value = false;
-    labelsArray = [];
-    dataArray = [];
+    labelsArray.splice(0, labelsArray.length);
+    dataArray.splice(0, dataArray.length);
 }
 
 const fill = () => {
     const countMax = datas.value.length;
-
-    if (countMax <= 0) { clear(); return; }
+    if (countMax <= 0) { loaded.value = false; return;}
 
     for (let i = 0; i < countMax; i++) {
         labelsArray.push(datas.value[i].dataTime);
@@ -149,5 +149,7 @@ const fill = () => {
         loaded.value = true;
     }
 }
+
+setInterval(search, 10000);
 
 </script>

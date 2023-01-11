@@ -11,6 +11,7 @@ export default function useData() {
             let resposnse = await http.get('data/topic/'+id);
             datas.value = resposnse.data;
         } catch (error) {
+          console.log(error)
             alert(error?.response?.data);
         }
     }
