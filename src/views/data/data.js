@@ -4,7 +4,6 @@ import { useRouter } from 'vue-router';
 
 export default function useData() {
     const datas = ref([]);
-    const router = useRouter();
 
     const getDatasByTopic = async (id) => {
         try {
@@ -16,8 +15,18 @@ export default function useData() {
         }
     }
 
+    const getDatasByDevice = async (id) => {
+        try {
+            let response = await http.get('data/device/'+id);
+            datas.value = response.data;
+        } catch (error) {
+          console.log(error)
+            alert(error?.response?.data);
+        }
+    }
     return {
         datas,
-        getDatasByTopic
+        getDatasByTopic,
+        getDatasByDevice
     }
 }

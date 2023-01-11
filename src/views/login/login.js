@@ -12,7 +12,7 @@ export default function useLogin() {
         try {
             const response = await http.post("auth/login", data);
             setLocalStorage(response.data.token, response.data.id);
-            await router.push("/data");
+            await router.push("/data_topic");
             location.reload();
         } catch (error) {
             alert(error?.response?.data.msg);

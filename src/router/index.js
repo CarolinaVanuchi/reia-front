@@ -15,7 +15,8 @@ import UpdateUser from '../views/user/Update.vue';
 import Topic from '../views/topic/List.vue';
 import CreateTopic from '../views/topic/Create.vue';
 
-import Data from '../views/data/topic/Data.vue';
+import DataPerTopic from '../views/data/topic/Data.vue';
+import DataPerDevice from '../views/data/device/Data.vue';
 
 const routes = [
     {
@@ -24,9 +25,14 @@ const routes = [
         component: Login
     },
     {
-        path: '/data',
-        name: 'Data',
-        component: Data,
+        path: '/data_topic',
+        name: 'DataPerTopic',
+        component: DataPerTopic,
+    },
+    {
+        path: '/data_device',
+        name: 'DataPerDevice',
+        component: DataPerDevice,
     },
     {
         path: '/topic',
@@ -82,7 +88,9 @@ const protectedRoutes = [
     "CreateDevice",
     "UpdateDevice",
     "ListDevice",
-    "ListTopic"
+    "ListTopic",
+    "DataPerTopic",
+    "DataPerDevice"
 ]
 
 

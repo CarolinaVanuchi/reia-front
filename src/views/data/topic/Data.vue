@@ -8,14 +8,14 @@
             </div>
             <form @submit.prevent="getItens">
                 <div class="row mt-3">
-                    <div class="col-md-3">
+                    <div class="col-md-8">
                         <select class="form-select" v-model="form.idTopic">
                             <option v-for="item in topics" :key="item.idTopic" :value="item.idTopic">{{
                                 item.idTopic
-                            }}, {{ item.name }}</option>
+                            }}, {{ item.name }}, {{ item.topic }}</option>
                         </select>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <button class="btn btn-outline-success btn-sm btn-block">
                             Buscar
                         </button>
@@ -36,7 +36,7 @@
                             <template v-for="item in datas" :key="item.idDataSensor">
                                 <tr>
                                     <th>{{ item.idDataSensor }}</th>
-                                    <th>{{ item.value }}</th>
+                                    <td>{{ item.value }}</td>
                                     <td>{{ item.dataTime }}</td>
                                 </tr>
                             </template>
@@ -52,9 +52,8 @@
 </template>
 
 <script setup>
-import { reactive } from "vue";
+import { reactive, onMounted } from "vue";
 import useData from "../data";
-import { onMounted } from "vue";
 import useTopic from "../../topic/topic";
 import { ref } from 'vue';
 
@@ -102,7 +101,8 @@ const data = {
         {
             label: 'Dados',
             backgroundColor: '#f87979',
-            data: dataArray
+            data: dataArray,
+            borderColor: "#424949"
         }
     ]
 }
