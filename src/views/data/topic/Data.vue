@@ -10,9 +10,8 @@
                 <div class="row mt-3">
                     <div class="col-md-8">
                         <select class="form-select" v-model="form.idTopic">
-                            <option v-for="item in topics" :key="item.idTopic" :value="item.idTopic">{{
-                                item.idTopic
-                            }}, {{ item.name }}, {{ item.topic }}</option>
+                            <option v-for="item in topics" :key="item.idTopic" :value="item.idTopic">
+                            Id: {{ item.idTopic }} Nome: {{ item.name }} Tópico: {{ item.topic }}</option>
                         </select>
                     </div>
                     <div class="col-md-4">

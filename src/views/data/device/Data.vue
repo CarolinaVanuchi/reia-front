@@ -8,14 +8,20 @@
             </div>
             <form @submit.prevent="getItens">
                 <div class="row mt-3">
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <select class="form-select" v-model="form.idDevice">
-                            <option v-for="item in devices" :key="item.idDevice" :value="item.idDevice">{{
-                                item.idDevice
-                            }}, {{ item.name }}, {{ item.ip }}:{{ item.port }}</option>
+                            <option v-for="item in devices" :key="item.idDevice" :value="item.idDevice">
+                                Id: {{ item.idDevice }} Nome: {{ item.name }} IP: {{ item.ip }}:{{ item.port }}</option>
                         </select>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-2">
+                        <input type="date" class="form-control" v-model="form.dataBegin">
+                    </div>
+                    <div class="col-md-2">
+                        <input type="date" class="form-control" v-model="form.dataEnd">
+                    </div>
+
+                    <div class="col-md-2">
                         <button class="btn btn-outline-success btn-sm btn-block">
                             Buscar
                         </button>
@@ -36,11 +42,15 @@
                         <tbody>
                             <template v-for="item in datas" :key="item.idTopic">
                                 <tr>
-                                    <td><b>Id:</b> {{ item.idTopic }} <b>Nome:</b>  {{ item.name }} <b>Tópico:</b>  {{ item.topic }}</td>
+                                    <td><b>Id:</b> {{ item.idTopic }} <b>Nome:</b> {{ item.name }} <b>Tópico:</b> {{
+                                        item.topic
+                                    }}</td>
 
                                     <div v-for="values in item.data_sensors">
                                         <td>
-                                            <b>Valor:</b> {{ values.value }} {{  item.typeOutput }} <b>Data:</b> {{ values.dataTime }}
+                                            <b>Valor:</b> {{ values.value }} {{ item.typeOutput }} <b>Data:</b> {{
+    values.dataTime
+                                            }}
                                         </td>
                                     </div>
 
@@ -66,11 +76,15 @@ const { datas, getDatasByDevice } = useData();
 const { devices, getDevices } = useDevice();
 
 let idDevice = 0;
+let begin = '';
+let end = '';
 
 onMounted(() => getDevices())
 
 const form = reactive({
-    idDevice: ''
+    idDevice: '',
+    dataBegin: '',
+    dataEnd: ''
 })
 
 const getItens = async () => {
@@ -79,13 +93,20 @@ const getItens = async () => {
         return;
     }
 
+    if (form.dataBegin == '' || form.dataEnd == '') {
+        alert("Escolha as datas"); 
+        return;
+    }
+
     idDevice = form.idDevice;
+    begin = form.dataBegin.replace("/", "-");
+    end = form.dataEnd.replace("/", "-");
     search();
 }
 
 const search = async () => {
     if (idDevice <= 0) return;
-    await getDatasByDevice(idDevice);
+    await getDatasByDevice(idDevice, begin, end);
 }
 
 

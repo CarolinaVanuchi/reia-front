@@ -33,9 +33,9 @@
                             <template v-for="item in topics" :key="item.idTopic">
                                 <tr>
                                     <th>{{ item.idTopic }}</th>
-                                    <th>{{ item.name }}</th>
-                                    <th>{{ item.idDevice }}</th>
-                                    <th>{{ item.topic }}</th>
+                                    <td>{{ item.name }}</td>
+                                    <td>{{ item.idDevice }}</td>
+                                    <td>{{ item.topic }}</td>
                                     <td>N: {{ item.gpio }}, {{ (item.gpioInput) ? 'Entrada' : 'Saída'}}</td>
                                     <td>{{ item.typeData }}: {{ item.minValueData }} até {{ item.maxValueData }}</td>
                                     <td>{{ item.typeOutput }}: {{ item.minOutput }} até {{ item.maxOutput }}</td>

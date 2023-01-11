@@ -32,7 +32,7 @@
                             <template v-for="item in devices" :key="item.idDevice">
                                 <tr>
                                     <th>{{ item.idDevice }}</th>
-                                    <th>{{ item.name }}</th>
+                                    <td>{{ item.name }}</td>
                                     <td>{{ item.ip }}</td>
                                     <td>{{ item.port }}</td>
                                     <td>{{ item.sample }}</td>

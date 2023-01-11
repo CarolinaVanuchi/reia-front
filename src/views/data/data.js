@@ -15,9 +15,9 @@ export default function useData() {
         }
     }
 
-    const getDatasByDevice = async (id) => {
+    const getDatasByDevice = async (id, dataBegin, dataEnd) => {
         try {
-            let response = await http.get('data/device/'+id);
+            let response = await http.get('data/device/'+id+"/"+dataBegin+"/"+dataEnd);
             datas.value = response.data;
         } catch (error) {
           console.log(error)
