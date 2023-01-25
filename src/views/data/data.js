@@ -7,20 +7,20 @@ export default function useData() {
 
     const getDatasByTopic = async (id) => {
         try {
-            let resposnse = await http.get('data/topic/'+id);
+            let resposnse = await http.get('data/topic/' + id);
             datas.value = resposnse.data;
         } catch (error) {
-          console.log(error)
+            console.log(error)
             alert(error?.response?.data);
         }
     }
 
     const getDatasByDevice = async (id, dataBegin, dataEnd) => {
         try {
-            let response = await http.get('data/device/'+id+"/"+dataBegin+"/"+dataEnd);
+            let response = await http.get('data/device/' + id + "/" + dataBegin + "/" + dataEnd);
             datas.value = response.data;
         } catch (error) {
-          console.log(error)
+            console.log(error)
             alert(error?.response?.data);
         }
     }

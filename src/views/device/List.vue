@@ -23,7 +23,6 @@
                                 <th scope="col">Nome</th>
                                 <th scope="col">IP</th>
                                 <th scope="col">Porta</th>
-                                <th scope="col">Amostragem</th>
                                 <th scope="col">Alterar</th>
                                 <th scope="col">Excluir</th>
                             </tr>
@@ -35,7 +34,6 @@
                                     <td>{{ item.name }}</td>
                                     <td>{{ item.ip }}</td>
                                     <td>{{ item.port }}</td>
-                                    <td>{{ item.sample }}</td>
                                     <td><button class="btn btn-sm btn-outline-warning"> <router-link
                                                 class="nav-link active"
                                                 :to="{ name: 'UpdateDevice', params: { id: item.idDevice } }">Alterar</router-link></button>

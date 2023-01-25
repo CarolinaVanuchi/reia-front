@@ -16,6 +16,9 @@
                         <router-link class="nav-link active" to="/data_device">Dados por disposítivos</router-link>
                     </li>
                     <li class="nav-item">
+                        <router-link class="nav-link active" to="/sample">Enviar Amostragem</router-link>
+                    </li>
+                    <li class="nav-item">
                         <router-link class="nav-link active" to="/device">Disposítivos</router-link>
                     </li>
                     <li class="nav-item">

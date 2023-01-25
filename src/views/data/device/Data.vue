@@ -110,6 +110,6 @@ const search = async () => {
 }
 
 
-setInterval(search, 10000);
+setInterval(search, 5000);
 
 </script>

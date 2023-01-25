@@ -21,7 +21,6 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Dispositivo</th>
-                                <th scope="col">Nome</th>
                                 <th scope="col">Tópico</th>
                                 <th scope="col">GPIO</th>
                                 <th scope="col">Tipo de Entrada</th>
@@ -33,10 +32,9 @@
                             <template v-for="item in topics" :key="item.idTopic">
                                 <tr>
                                     <th>{{ item.idTopic }}</th>
-                                    <td>{{ item.name }}</td>
                                     <td>{{ item.idDevice }}</td>
                                     <td>{{ item.topic }}</td>
-                                    <td>N: {{ item.gpio }}, {{ (item.gpioInput) ? 'Entrada' : 'Saída'}}</td>
+                                    <td>N: {{ item.gpio }}</td>
                                     <td>{{ item.typeData }}: {{ item.minValueData }} até {{ item.maxValueData }}</td>
                                     <td>{{ item.typeOutput }}: {{ item.minOutput }} até {{ item.maxOutput }}</td>
                                     <td><button class="btn btn-sm btn-outline-danger"

@@ -8,12 +8,8 @@ export default function useTopic() {
     const router = useRouter();
 
     const getTopics = async () => {
-        try {
-            let resposnse = await http.get('topic');
-            topics.value = resposnse.data;
-        } catch (error) {
-            alert(error?.response?.data);
-        }
+        let resposnse = await http.get('topic');
+        topics.value = resposnse.data;
     }
 
     const deleteTopic = async (id) => {
@@ -45,9 +41,7 @@ export default function useTopic() {
     const updateTopic = async (id) => {
         try {
             await http.put('topic/' + id, {
-                name: topicOne.value.name,
                 gpio: topicOne.value.gpio,
-                gpioInput: topicOne.value.gpioInput,
                 topic: topicOne.value.topic,
                 device: topicOne.value.device,
                 typeData: topicOne.value.typeData,

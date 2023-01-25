@@ -18,6 +18,8 @@ import CreateTopic from '../views/topic/Create.vue';
 import DataPerTopic from '../views/data/topic/Data.vue';
 import DataPerDevice from '../views/data/device/Data.vue';
 
+import Sample from '../views/sample/Sample.vue';
+
 const routes = [
     {
         path: '/',
@@ -76,6 +78,11 @@ const routes = [
         component: UpdateUser,
         props: true
     },
+    {
+        path: '/sample',
+        name: 'Sample',
+        component: Sample
+    },
     { path: "/:catchAll(.*)", component: NotFound }
 ]
 
@@ -90,7 +97,8 @@ const protectedRoutes = [
     "ListDevice",
     "ListTopic",
     "DataPerTopic",
-    "DataPerDevice"
+    "DataPerDevice",
+    "Sample"
 ]
 
 

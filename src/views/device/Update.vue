@@ -22,9 +22,6 @@
               <input class="form-control" placeholder="Porta" type="number" v-model="deviceOne.port" />
             </div>
             <div class="row mt-3">
-              <input class="form-control" placeholder="Amostragem" type="number" v-model="deviceOne.sample" />
-            </div>
-            <div class="row mt-3">
               <button class="btn btn-outline-success btn-sm btn-block">
                 Salvar
               </button>
@@ -53,7 +50,7 @@ const props = defineProps({
 onMounted(() => getOneDevice(props.id))
 
 const alterDevice = async () => {
-  if (!deviceOne.value.name || !deviceOne.value.ip || !deviceOne.value.port || !deviceOne.value.sample) {
+  if (!deviceOne.value.name || !deviceOne.value.ip || !deviceOne.value.port) {
     alert("Informe todos os campos");
     return;
   }

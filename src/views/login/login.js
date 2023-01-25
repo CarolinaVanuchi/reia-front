@@ -11,7 +11,7 @@ export default function useLogin() {
     const login = async (data) => {
         try {
             const response = await http.post("auth/login", data);
-            setLocalStorage(response.data.token, response.data.id);
+            setLocalStorage(response.data.token);
             await router.push("/data_topic");
             location.reload();
         } catch (error) {

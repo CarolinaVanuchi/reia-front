@@ -12,15 +12,7 @@
 
                     <form @submit.prevent="saveTopic">
                         <div class="row mt-3">
-                            <div class="col-6">
-                                <input class="form-control" placeholder="Nome" type="text" v-model="form.name" />
-                            </div>
-                            <div class="col-6">
-                                <input class="form-control" placeholder="Tópico" type="text" v-model="form.topic" />
-                            </div>
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-6">
+                            <div class="col-5">
                                 <select class="form-select" v-model="form.device">
                                     <option v-for="item in devices" :key="item.idDevice" :value="item.idDevice">{{
                                         item.idDevice
@@ -28,41 +20,26 @@
                                 </select>
                             </div>
 
-                            <div class="col-3">
+                            <div class="col-5">
+                                <input class="form-control" placeholder="Tópico" type="text" v-model="form.topic" />
+                            </div>
+                            <div class="col-2">
                                 <input class="form-control" placeholder="Gpio" type="number" v-model="form.gpio" />
                             </div>
-                            <div class="col-3">
-                                <select class="form-select" v-model="form.gpioInput">
-                                    <option value="true">Entrada</option>
-                                    <option value="false" :key="false">Saída</option>
-                                </select>
-                            </div>
                         </div>
 
                         <div class="row mt-3">
-                            <div class="col-6">
-                                <select class="form-select" v-model="form.typeData">
-                                    <option value="Corrente">Corrente</option>
-                                    <option value="Tensão" :key="false">Tensão</option>
+                            <div class="col-3">
+                                <select class="form-select" v-model="form.valueData">
+                                    <option value="420">4 - 20mA</option>
+                                    <option value="010">0 - 10V</option>
                                 </select>
                             </div>
 
                             <div class="col-3">
-                                <input class="form-control" placeholder="Menor valor de entrada" type="number"
-                                    v-model="form.minValueData" />
-                            </div>
-
-                            <div class="col-3">
-                                <input class="form-control" placeholder="Maior valor de entrada" type="number"
-                                    v-model="form.maxValueData" />
-                            </div>
-                        </div>
-
-                        <div class="row mt-3">
-                            <div class="col-6">
                                 <select class="form-select" v-model="form.typeOutput">
                                     <option value="Temperatura">Temperatura</option>
-                                    <option value="Umidade" :key="false">Umidade</option>
+                                    <option value="Umidade" >Umidade</option>
                                 </select>
                             </div>
 
@@ -107,9 +84,8 @@ const form = reactive({
     topic: '',
     device: '',
     gpio: '',
-    name: '',
-    gpioInput: 'true',
     typeData: 'Corrente',
+    valueData: '420',
     minValueData: '',
     maxValueData: '',
     typeOutput: 'Temperatura',
@@ -120,16 +96,27 @@ const form = reactive({
 
 const saveTopic = async () => {
 
-    if (!form.name || !form.gpio || !form.gpioInput || !form.topic || !form.device || 
-        !form.typeData || form.minValueData == null || form.maxValueData == null  || !form.typeOutput || form.minOutput == null || form.maxOutput == null ) {
+    if (!form.gpio || !form.topic || !form.device ||
+        form.valueData == null || !form.typeOutput || form.minOutput == null || form.maxOutput == null) {
         alert("Preencha todos os campos");
         return;
     }
 
+    switch(form.valueData) {
+        case '420':
+            form.minValueData = 4;
+            form.maxValueData = 20;
+            form.typeData = 'Corrente';
+            break;
+        case '010':
+            form.minValueData = 0;
+            form.maxValueData = 10;
+            form.typeData = 'Tensão';
+            break;
+    }
+  
     await createTopic({
-        name: form.name,
         gpio: form.gpio,
-        gpioInput: form.gpioInput,
         topic: form.topic,
         device: form.device,
         typeData: form.typeData,

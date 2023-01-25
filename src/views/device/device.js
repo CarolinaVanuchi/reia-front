@@ -36,7 +36,7 @@ export default function useDevice() {
 
     const updateDevice = async (id) => {
         try {
-            await http.put('device/' + id, { name: deviceOne.value.name, ip: deviceOne.value.ip, port: deviceOne.value.port, sample: deviceOne.value.sample });
+            await http.put('device/' + id, { name: deviceOne.value.name, ip: deviceOne.value.ip, port: deviceOne.value.port });
             await router.push("/device");
         } catch (error) {
             alert(error?.response.data);

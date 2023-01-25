@@ -22,9 +22,6 @@
                 <input class="form-control" placeholder="Porta" type="number" v-model="form.port" />
               </div>
               <div class="row mt-3">
-                <input class="form-control" placeholder="Amostragem" type="number" v-model="form.sample" />
-              </div>
-              <div class="row mt-3">
                 <button class="btn btn-outline-success btn-sm btn-block">
                   Salvar
                 </button>
@@ -47,18 +44,16 @@
     const form = reactive({
         name: '',
         ip: '',
-        port: '',
-        sample: ''
+        port: ''
     })
 
     const saveDevice = async () => {
-        console.log('ss')
-        if (!form.name || !form.ip || !form.port || !form.sample) {
+        if (!form.name || !form.ip || !form.port) {
             alert("Informe todos os campos");
             return;
         }
 
-        await createDevice({ name: form.name, ip: form.ip, port: form.port, sample: form.sample});
+        await createDevice({ name: form.name, ip: form.ip, port: form.port});
     }
   
   </script>

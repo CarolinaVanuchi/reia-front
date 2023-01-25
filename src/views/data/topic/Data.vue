@@ -149,6 +149,6 @@ const fill = () => {
     }
 }
 
-setInterval(search, 10000);
+setInterval(search, 5000);
 
 </script>
