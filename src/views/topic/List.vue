@@ -35,7 +35,7 @@
                                     <td>{{ item.idDevice }}</td>
                                     <td>{{ item.topic }}</td>
                                     <td>N: {{ item.gpio }}</td>
-                                    <td>{{ item.typeData }}: {{ item.minValueData }} até {{ item.maxValueData }}</td>
+                                    <td>{{ item.typeData }}: {{ item.minInput }} até {{ item.maxInput }}</td>
                                     <td>{{ item.typeOutput }}: {{ item.minOutput }} até {{ item.maxOutput }}</td>
                                     <td><button class="btn btn-sm btn-outline-danger"
                                             @click="removeTopic(item.idTopic)">Excluir</button></td>

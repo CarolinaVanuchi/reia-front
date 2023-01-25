@@ -13,13 +13,13 @@
                         <router-link class="nav-link active" to="/data_topic">Dados por tópico</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link class="nav-link active" to="/data_device">Dados por disposítivos</router-link>
+                        <router-link class="nav-link active" to="/data_device">Dados por dispositivos</router-link>
                     </li>
                     <li class="nav-item">
                         <router-link class="nav-link active" to="/sample">Enviar Amostragem</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link class="nav-link active" to="/device">Disposítivos</router-link>
+                        <router-link class="nav-link active" to="/device">Dispositivos</router-link>
                     </li>
                     <li class="nav-item">
                         <router-link class="nav-link active" to="/topic">Tópicos</router-link>

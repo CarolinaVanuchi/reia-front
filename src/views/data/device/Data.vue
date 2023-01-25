@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="row" style="margin-top: 30px">
                 <hr />
-                <h3>Dados por Disposítivo</h3>
+                <h3>Dados por Dispositivo</h3>
                 <hr />
             </div>
             <form @submit.prevent="getItens">

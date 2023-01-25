@@ -25,6 +25,7 @@ export default function useTopic() {
             await http.post('topic/', data);
             await router.push("/topic")
         } catch (error) {
+            console.log(error)
             alert(error?.response?.data);
         }
     }
@@ -45,8 +46,8 @@ export default function useTopic() {
                 topic: topicOne.value.topic,
                 device: topicOne.value.device,
                 typeData: topicOne.value.typeData,
-                minValueData: topicOne.value.minValueData,
-                maxValueData: topicOne.value.maxValueData,
+                minInput: topicOne.value.minInput,
+                maxInput: topicOne.value.maxInput,
                 typeOutput: topicOne.value.typeOutput,
                 minOutput: topicOne.value.minOutput,
                 maxOutput: topicOne.value.maxOutput,

@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="row" style="margin-top: 30px">
                 <hr />
-                <h3>Disposítivos</h3>
+                <h3>Dispositivos</h3>
                 <hr />
             </div>
             <div class="row">

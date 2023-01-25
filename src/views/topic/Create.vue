@@ -86,8 +86,8 @@ const form = reactive({
     gpio: '',
     typeData: 'Corrente',
     valueData: '420',
-    minValueData: '',
-    maxValueData: '',
+    minInput: '',
+    maxInput: '',
     typeOutput: 'Temperatura',
     minOutput: '',
     maxOutput: ''
@@ -104,13 +104,13 @@ const saveTopic = async () => {
 
     switch(form.valueData) {
         case '420':
-            form.minValueData = 4;
-            form.maxValueData = 20;
+            form.minInput = 4;
+            form.maxInput = 20;
             form.typeData = 'Corrente';
             break;
         case '010':
-            form.minValueData = 0;
-            form.maxValueData = 10;
+            form.minInput = 0;
+            form.maxInput = 10;
             form.typeData = 'Tensão';
             break;
     }
@@ -120,8 +120,8 @@ const saveTopic = async () => {
         topic: form.topic,
         device: form.device,
         typeData: form.typeData,
-        minValueData: form.minValueData,
-        maxValueData: form.maxValueData,
+        minInput: form.minInput,
+        maxInput: form.maxInput,
         typeOutput: form.typeOutput,
         minOutput: form.minOutput,
         maxOutput: form.maxOutput,
