@@ -11,11 +11,11 @@ export default function useLogin() {
     const login = async (data) => {
         try {
             const response = await http.post("auth/login", data);
-            setLocalStorage(response.data.token);
+            setLocalStorage(response.data.token, response.data.username);
             await router.push("/data_topic");
             location.reload();
         } catch (error) {
-            alert(error?.response?.data.msg);
+            console.log(error.message);
             clearLocalStorage();
         }
     }

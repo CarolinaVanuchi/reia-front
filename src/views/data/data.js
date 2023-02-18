@@ -11,7 +11,6 @@ export default function useData() {
             datas.value = resposnse.data;
         } catch (error) {
             console.log(error)
-            alert(error?.response?.data);
         }
     }
 
@@ -21,7 +20,6 @@ export default function useData() {
             datas.value = response.data;
         } catch (error) {
             console.log(error)
-            alert(error?.response?.data);
         }
     }
     return {

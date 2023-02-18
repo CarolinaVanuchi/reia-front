@@ -1,5 +1,4 @@
 <template>
-
     <nav v-if="auth.isAuthenticated.value" class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Reia</a>
@@ -39,14 +38,14 @@
 <script setup>
 
 import useAuth from "../store/auth";
-import { onUpdated } from "vue";
+import { useRouter } from 'vue-router';
 const auth = useAuth();
+const router = useRouter();
 
-function logout()
-{
+async function logout() {
     auth.clearLocalStorage();
+    await router.push("/");
+    location.reload();
 }
 </script>
-<style>
-
-</style>
+<style></style>

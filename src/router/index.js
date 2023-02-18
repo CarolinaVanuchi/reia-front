@@ -102,17 +102,16 @@ const protectedRoutes = [
 ]
 
 
-router.beforeEach((to, from, next) => {
-    const isProtected = protectedRoutes.includes(to.name)
+router.beforeEach(async (to, from, next) => {
     const auth = useAuth();
-    if (isProtected && !auth.isAuthenticated.value) {
+    const check = await auth.checkToken();
+    if (to.name != 'Login' && !check) {
+        console.log('here');
         next({
             path: '/'
         })
-    } else next()
+    } else next();
 })
-
-
 
 
 export default router;

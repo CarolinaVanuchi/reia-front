@@ -25,8 +25,7 @@ export default function useTopic() {
             await http.post('topic/', data);
             await router.push("/topic")
         } catch (error) {
-            console.log(error)
-            alert(error?.response?.data);
+            console.log(error);
         }
     }
 
@@ -35,7 +34,7 @@ export default function useTopic() {
             let response = await http.get('topic/' + id);
             topicOne.value = response.data;
         } catch (error) {
-            alert(error?.response?.data);
+            console.log(error);
         }
     }
 

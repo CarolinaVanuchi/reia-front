@@ -30,7 +30,7 @@ export default function useDevice() {
             await http.post('device/', data);
             await router.push("/device");
         } catch (error) {
-            alert(error?.response?.data);
+            console.log(error);
         }
     }
 
@@ -39,7 +39,6 @@ export default function useDevice() {
             await http.put('device/' + id, { name: deviceOne.value.name, ip: deviceOne.value.ip, port: deviceOne.value.port });
             await router.push("/device");
         } catch (error) {
-            alert(error?.response.data);
             console.log(error)
         }
     }
