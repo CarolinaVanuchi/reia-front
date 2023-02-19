@@ -1,22 +1,21 @@
 import { computed } from "vue";
-import { ref } from 'vue';
-import { useRouter } from 'vue-router';
 import http from "../services/http.js";
+import { ref } from "vue";
 
 export default function useAuth() {
-    const router = useRouter();
-    const token = ref([]);
-
+    let isOkayNav = ref([]);
+    isOkayNav.value = false;
     const setLocalStorage = (tokenValue, username) => {
         localStorage.setItem("token", tokenValue);
         localStorage.setItem("username", username);
     }
-    
+
     const clearLocalStorage = async () => {
+        isOkayNav.value = false;
         localStorage.removeItem("token");
         localStorage.removeItem("username");
     }
-    
+
     const getToken = () => {
         return localStorage.getItem("token");
     }
@@ -24,23 +23,32 @@ export default function useAuth() {
     const getUsername = () => {
         return localStorage.getItem("username");
     }
-    
-    const isAuthenticated = computed( () => {
+
+    const isAuthenticated = computed(() => {
         return (getToken() != null);
     })
 
     async function checkToken() {
+        getToken();
+        console.log(getToken())
+        getUsername();
+        isOkayNav.value = false;
         if (getToken() == null || getUsername() == null) return false;
-        const response = await http.get('auth/validate/' + getUsername());
-        return response.data;
-    } 
+        try {
+            await http.get('auth/validate/' + getUsername());
+            isOkayNav.value = true;
+            return true;
+        } catch (error) {
+            return false;
+        }
+    }
 
     return {
-        token,
         isAuthenticated,
         setLocalStorage,
         getToken,
         clearLocalStorage,
-        checkToken
+        checkToken,
+        isOkayNav
     }
 }

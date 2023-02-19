@@ -41,7 +41,7 @@ import useAuth from "../store/auth";
 import { useRouter } from 'vue-router';
 const auth = useAuth();
 const router = useRouter();
-
+console.log(auth.isOkayNav.value)
 async function logout() {
     auth.clearLocalStorage();
     await router.push("/");

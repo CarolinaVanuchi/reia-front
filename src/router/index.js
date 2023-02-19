@@ -105,10 +105,9 @@ const protectedRoutes = [
 router.beforeEach(async (to, from, next) => {
     const auth = useAuth();
     const check = await auth.checkToken();
-    if (to.name != 'Login' && !check) {
-        console.log('here');
+    if (to.name != 'Login' && to.name != 'DataPerTopic' && !check) {
         next({
-            path: '/'
+            name: 'Login'
         })
     } else next();
 })

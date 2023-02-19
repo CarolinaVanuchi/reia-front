@@ -5,13 +5,15 @@ import useAuth from "../../store/auth";
 
 export default function useLogin() {
     
-    const { setLocalStorage, clearLocalStorage } = useAuth();
+    const { setLocalStorage, clearLocalStorage, isOkayNav } = useAuth();
     const router = useRouter();
 
     const login = async (data) => {
         try {
             const response = await http.post("auth/login", data);
             setLocalStorage(response.data.token, response.data.username);
+            isOkayNav.value = true;
+            console.log(isOkayNav.value)
             await router.push("/data_topic");
             location.reload();
         } catch (error) {

@@ -13,7 +13,7 @@ export default function useUser() {
             let resposnse = await http.get('user');
             users.value = resposnse.data;
         } catch (error) {
-            alert(error?.response?.data);
+            console.log(error)
         }
     }
 
